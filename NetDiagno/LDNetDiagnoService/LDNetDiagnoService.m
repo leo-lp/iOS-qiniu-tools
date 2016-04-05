@@ -195,28 +195,19 @@ static NSString *const kCheckOutIPURL = @"";
 - (void)emailToUS
 {
     //发送者
-    _testLogInfoMsg.fromEmail = @"qwebtest@qiniu.com";
-//    _testLogInfoMsg.fromEmail = @"2501189138@qq.com";
+    _testLogInfoMsg.fromEmail = @"";
     //发送给
     _testLogInfoMsg.toEmail = @"client-report@qiniu.com";
-//    _testLogInfoMsg.toEmail = @"1132628199@qq.com";
-    //抄送联系人列表，如：@"664742641@qq.com;1@qq.com;2@q.com;3@qq.com"
-//    _testLogInfoMsg.ccEmail = @"lanyuu@live.cn";
-    //密送联系人列表，如：@"664742641@qq.com;1@qq.com;2@q.com;3@qq.com"
-//    _testLogInfoMsg.bccEmail = @"664742641@qq.com";
     //发送有些的发送服务器地址
-    _testLogInfoMsg.relayHost = @"smtp.exmail.qq.com";
+    _testLogInfoMsg.relayHost = @"";
 //    _testLogInfoMsg.relayHost = @"smtp.qq.com";
     //需要鉴权
     _testLogInfoMsg.requiresAuth = YES;
     //发送者的登录账号
-    _testLogInfoMsg.login = @"qwebtest@qiniu.com";
-//    _testLogInfoMsg.login = @"2501189138@qq.com";
+    _testLogInfoMsg.login = @"";
     //发送者的登录密码
-    _testLogInfoMsg.pass = @"na46d6v9";
-//    _testLogInfoMsg.pass = @"12345667kiven@";
+    _testLogInfoMsg.pass = @"";
     //邮件主题
-//    _testLogInfoMsg.subject = [NSString stringWithCString:"这是一封来自解决方案部同事何舒的测试邮件" encoding:NSUTF8StringEncoding ];
     _testLogInfoMsg.subject = [NSString stringWithFormat:@"七牛网络测试--%@",_dormain];
     _testLogInfoMsg.wantsSecure = NO; // smtp.gmail.com doesn't work without TLS!
     // Only do this for self-signed certs!
@@ -226,20 +217,6 @@ static NSString *const kCheckOutIPURL = @"";
     //正文
     NSDictionary *plainPart = [NSDictionary dictionaryWithObjectsAndKeys:@"text/plain",kSKPSMTPPartContentTypeKey,_logInfo,kSKPSMTPPartMessageKey,@"8bit",kSKPSMTPPartContentTransferEncodingKey,nil];
     
-//    //设置文本附件
-//    NSData *mailData = [NSData dataWithContentsOfFile:self.mailPath];
-//    NSDictionary *txtPart = [[NSDictionary alloc ]initWithObjectsAndKeys:@"text/plain;\r\n\tx-unix-mode=0644;\r\n\tname=\"bug.txt\"",kSKPSMTPPartContentTypeKey, @"attachment;\r\n\tfilename=\"bug.txt\"", kSKPSMTPPartContentDispositionKey, [mailData encodeBase64ForData], kSKPSMTPPartMessageKey, @"base64", kSKPSMTPPartContentTransferEncodingKey,nil];
-//    
-//    //附件图片文件（联系人）
-//    NSString *vcfPath = [[NSBundle mainBundle] pathForResource:@"video.jpg" ofType:@""];
-//    NSData *vcfData = [NSData dataWithContentsOfFile:vcfPath];
-//    NSDictionary *vcfPart = [[NSDictionary alloc ]initWithObjectsAndKeys:@"text/directory;\r\n\tx-unix-mode=0644;\r\n\tname=\"video.jpg\"",kSKPSMTPPartContentTypeKey,
-//                             @"attachment;\r\n\tfilename=\"video.jpg\"",kSKPSMTPPartContentDispositionKey,[vcfData encodeBase64ForData],kSKPSMTPPartMessageKey,@"base64",kSKPSMTPPartContentTransferEncodingKey,nil];
-//    //附件音频文件
-//    NSString *wavPath = [[NSBundle mainBundle] pathForResource:@"push" ofType:@"wav"];
-//    NSData *wavData = [NSData dataWithContentsOfFile:wavPath];
-//    NSDictionary *wavPart = [[NSDictionary alloc ]initWithObjectsAndKeys:@"text/directory;\r\n\tx-unix-mode=0644;\r\n\tname=\"push.wav\"",kSKPSMTPPartContentTypeKey,
-//                             @"attachment;\r\n\tfilename=\"push.wav\"",kSKPSMTPPartContentDispositionKey,[wavData encodeBase64ForData],kSKPSMTPPartMessageKey,@"base64",kSKPSMTPPartContentTransferEncodingKey,nil];
     _testLogInfoMsg.parts = [NSArray arrayWithObjects:plainPart, nil];
     //发送
     dispatch_async(dispatch_get_main_queue(), ^{
